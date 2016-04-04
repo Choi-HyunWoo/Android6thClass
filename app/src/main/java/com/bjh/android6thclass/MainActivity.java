@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     3. < Broadcast Receiver >
-
-
+     1) BroadcastReceiver class를 상속받은 Receiver 생성
+     2) Manifest에서 <intent-filter> 로 Action을 추가하여, SMS가 왔을 때 Receiver가 동작하도록 설정.
 
      */
 
