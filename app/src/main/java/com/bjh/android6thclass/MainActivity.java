@@ -1,5 +1,7 @@
 package com.bjh.android6thclass;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     3. < Broadcast Receiver >
      1) BroadcastReceiver class를 상속받은 Receiver 생성
      2) Manifest에서 <intent-filter> 로 Action을 추가하여, SMS가 왔을 때 Receiver가 동작하도록 설정.
+
+    4. < Toast & Dialog >
+      AlertDialog는 Modaless로 동작
+
 
      */
 
@@ -85,6 +91,47 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MyService.class);
                 stopService(intent);
                 Toast.makeText(MainActivity.this, "MyService 종료", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn = (Button) findViewById(R.id.btn_dialog);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setTitle("안내");
+                builder.setMessage("앱을 종료하시겠습니까?");
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "꺼져", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+                builder.setNeutralButton("몰라", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "힝", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dlg = builder.create();
+                dlg.show();
+            }
+        });
+
+        btn = (Button) findViewById(R.id.btn_customdialog);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog dlg = new CustomDialog(MainActivity.this);
+                dlg.show();
             }
         });
     }

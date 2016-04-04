@@ -15,7 +15,7 @@
         android:id="@+id/listView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_service_start" />
+        android:layout_below="@+id/btn_dialog" />
 
     <Button
         android:layout_width="wrap_content"
@@ -34,4 +34,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialog"
+        android:id="@+id/btn_dialog"
+        android:layout_below="@+id/btn_service_start"
+        android:layout_alignRight="@+id/btn_service_start"
+        android:layout_alignEnd="@+id/btn_service_start" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CustomDialog"
+        android:id="@+id/btn_customdialog"
+        android:layout_below="@+id/btn_service_finish"
+        android:layout_alignRight="@+id/listView"
+        android:layout_alignEnd="@+id/listView" />
 </RelativeLayout>
